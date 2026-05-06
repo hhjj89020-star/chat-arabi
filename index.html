@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل دخول</title>
+</head>
+<body style="text-align:center; font-family:Arial;">
+
+  <h2>🔐 تسجيل / دخول</h2>
+
+  <input type="text" id="name" placeholder="اكتب اسمك"><br><br>
+  <input type="email" id="email" placeholder="الايميل"><br><br>
+  <input type="password" id="password" placeholder="كلمة المرور"><br><br>
+
+  <button onclick="login()">تسجيل دخول</button>
+
+  <script>
+    function login() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (name === "") {
+        alert("❌ اكتب اسمك");
+        return;
+      }
+
+      if (email === "") {
+        alert("❌ اكتب الايميل");
+        return;
+      }
+
+      if (password === "") {
+        alert("❌ اكتب كلمة المرور");
+        return;
+      }
+
+      // حفظ البيانات
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+
+      // التحقق من الادمن
+      if (email === "jumach074@gmail.com") {
+        localStorage.setItem("admin", "true");
+        alert("🔥 مرحبا أدمن " + name);
+      } else {
+        localStorage.setItem("admin", "false");
+        alert("✅ تم تسجيل الدخول " + name);
+      }
+
+      // الانتقال للشات
+      window.location.href = "chat.html";
+    }
+  </script>
+
+</body>
+</html>
